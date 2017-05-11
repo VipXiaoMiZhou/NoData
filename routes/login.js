@@ -4,7 +4,8 @@ var router = express.Router();
 
 /* GET login page. */
 router.get('/', (req, res) => {
-  res.render('login', {title : 'Express'});
+  req.session.error = null;
+  res.render('login', {title : 'Express', user: req.session.user});
 });
 
 /*post data*/
@@ -15,11 +16,10 @@ router.post('/', (req, res) => {
     // add username to session
     if(!req.session.user){
       req.session.user = username;
-    }else {
-      req.session.user = username;
     }
     res.redirect('/management');
   }else{
+    req.session.error = "username or password is wrong !";
     res.redirect('/login');
   }
 });

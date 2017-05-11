@@ -6,6 +6,9 @@ const https = require('https');
 **/
 module.exports = {
   userAuthorized : (username, password) => {
+    if(password != 'admin'){
+      return false;
+    }
     return true;
   }
 }

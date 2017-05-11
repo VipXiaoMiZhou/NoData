@@ -3,18 +3,38 @@
 <head>
 <meta charset="utf-8">
 <title><%=: title %></title>
+
 <!-- Bootstrap -->
 <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
+<script src="/javascripts/jquery.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".close").click(function(){
+		$("#myAlert").alert();
+	});
+});
+</script>
 <!-- <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen"> -->
 </head>
 <body screen_capture_injected="true" class="bs-docs-home">
   <% include header.html %>
-    <div class="container">
-    	<div class="row clearfix">
+  <div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+      <div class="row clearfix">
     		<div class="col-md-4 column">
     		</div>
     		<div class="col-md-4 column">
           <h2 class="form-signin-heading">Please sign in</h2>
+
+          <% if(error) { %>
+          <div id="myAlert" class="alert alert-danger">
+	<a href="#" class="close" data-dismiss="alert">&times;</a>
+	<strong><%=: error %></strong>
+</div>
+
+<% } %>
           <form class="form-signin" role="form" action="/login" method="POST">
             <label for="inputEmail" class="sr-only">Email address</label>
             <input type="email" id="username" name="username" class="form-control" placeholder="Email address" required autofocus>
@@ -27,11 +47,14 @@
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
           </form>
+
     		</div>
     		<div class="col-md-4 column">
     		</div>
     	</div>
-  </div> <!-- /container -->
+		</div>
+	</div>
+</div>
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <% include footer.html %>
 </body>

@@ -35,6 +35,19 @@ app.use(session({
   saveUninitialized: true
 }));
 
+app.use(function(req,res, next) {
+  // ok
+  res.locals.error = req.session.error;
+  res.locals.user = req.session.user;
+  res.locals.message = req.session.message;
+  res.locals.success = req.session.success;
+  next();
+});
+
+
+
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 
@@ -53,8 +66,6 @@ app.use(function(req, res, next) {
     err.status = 404;
     next(err);
 });
-
-
 
 /// error handlers
 
