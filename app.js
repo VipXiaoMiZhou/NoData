@@ -12,9 +12,11 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
 var about = require('./routes/about');
-var signup = require('./routes/signup');
-var signout = require('./routes/signout');
+var register = require('./routes/register');
+var logout = require('./routes/logout');
 var management = require('./routes/management');
+var profile = require('./routes/profile');
+var fgetpsd = require('./routes/fgetpsd');
 
 var app = express();
 
@@ -56,9 +58,11 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/login', login);
 app.use('/about', about);
-app.use('/signup', signup);
-app.use('/signout', signout);
+app.use('/register', register);
+app.use('/logout', logout);
 app.use('/management', management);
+app.use('/profile',profile);
+app.use('/fgetpad',fgetpsd);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

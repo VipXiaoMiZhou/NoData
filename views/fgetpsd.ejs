@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title><%=: title %></title>
+<link href="/stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="/stylesheets/style.css" rel="stylesheet">
+<link href="/stylesheets/mystyle.css" rel="stylesheet">
+<link href="/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
+<script src="/javascripts/jquery.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".close").click(function(){
+		$("#myAlert").alert();
+	});
+});
+</script>
+</head>
+<body>
+	<% include header.html %>
+  <div class="container full-height">
+
+    <div class="row">
+      <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="public-form-container">
+     <div class="public-form-logo"><a href="#"> <img src="/img/nodata.png" class="logo small" /> </a></div>
+     <div class="form-title">Forgot your password ?</div>
+     <div class="form-subtitle">No problem, just enter your email address and we'll send you a reset link.</div>
+
+     <form class="form" data-ember-action="" data-ember-action-354="354">
+      <div class="form-group">
+       <label for="email">Email</label>
+       <input required="" placeholder="Your Email" id="input-email" class="form-control input-email ember-text-field ember-view" type="email" />
+      </div>
+      <div class="row middle-sm middle-xs">
+       <div class="col-sm-8 col-xs-8">
+        <button type="submit" class="btn btn-primary">Reset Password</button>
+       </div>
+      </div>
+     </form>
+    </div>
+
+    <div class="form-footnote">
+      Don't have a nodata account yet ? &nbsp;
+  <a href="/login" id="ember370" class="ember-view">Sign Up</a>
+</div>
+
+  </div>
+  <div class="col-md-2"></div>
+    </div>
+  </div>
+ <% include footer.html %>
+</body>
+
+</html>

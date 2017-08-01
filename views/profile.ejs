@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>profile</title>
+<!-- Bootstrap -->
+<link href="/stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="/stylesheets/style.css" rel="stylesheet">
+<link href="/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
+<script src="/javascripts/jquery.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<!-- <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen"> -->
+
+<script type="text/javascript">
+$(function(){
+	$("#btnlogin").click(function(){
+		var username = $("#username").val();
+		if(!username){
+			alert("Do that again");
+		}
+
+		$.ajax({
+			url:"http://127.0.0.1:8080/FrontDesk/api/profile",
+			type:"post",
+			data:{'username' : username},
+			success : function(result){
+				if(result){
+					alert(result);
+				}
+			}
+		});
+	});
+});
+
+</script>
+
+
+</head>
+
+
+<body id="wrapper" screen_capture_injected="true" class="bs-docs-home">
+<header><% include header.html %></header>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="row-fluid">
+				<div class="span4">
+				</div>
+				<div class="span4">
+					<form>
+						<fieldset>
+							 <legend>表单项</legend>
+               <label>表签名</label>
+               <input type="text" id="username" />
+               <span class="help-block">这里填写帮助信息.</span>
+               <label class="checkbox">
+							<input type="checkbox"/> 勾选同意</label>
+               <button type="submit" class="btn" id="btnlogin">提交</button>
+						</fieldset>
+					</form>
+				</div>
+				<div class="span4">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+  <% include footer.html %>
+  </body>
+</html>
