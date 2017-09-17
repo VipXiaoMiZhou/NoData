@@ -3,12 +3,12 @@ const $sql = require('./sql');
 
 module.exports = {
   verification:function(req,res,next){
-    var username = req.body.username;
+    var email = req.body.email;
     var password = req.body.password;
 
     pool.getConnection(function(err, connection) {
       // Use the connection
-      connection.query($sql.verification,[username], function (error, results, fields) {
+      connection.query($sql.verification,[email], function (error, results, fields) {
         // And done with the connection.
         if(results != undefined && results.length > 0){
           if(results[0].password != password){
@@ -16,7 +16,7 @@ module.exports = {
             res.redirect('/login');
           }
           if(!req.session.user){
-            req.session.user = username;
+            req.session.user = email;
           }
           res.redirect('/management');
         } else{
@@ -34,8 +34,9 @@ module.exports = {
   register : function(req,res,next){
     var username = req.body.username;
     var password = req.body.password;
+    var email = req.body.email
     pool.getConnection(function(err, connection) {
-      connection.query($sql.register,[username,password], function (error, results, fields) {
+      connection.query($sql.register,[email,username,password], function (error, results, fields) {
         // And done with the connection.
         if(undefined != results){
           req.session.info = "Successfully register, please login!";

@@ -1,4 +1,4 @@
 module.exports = {
-  verification : 'SELECT `password` FROM `user` WHERE `username` = ?;',
-  register: 'INSERT INTO `user`(`username`,`password`) values(?,?);'
+  verification : 'SELECT `password` FROM `user` WHERE `email` = ?;',
+  register: 'INSERT INTO `user`(`email`,`username`,`password`) values(?,?,?);'
 }
